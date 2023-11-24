@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="temp.css">
+</head>
+<body>
+    <form id="tempConverterForm">
+        <div class="table">
+            <label for="temp">&#8451; Temperature:</label>
+            <input type="number" id="celsiusInput" placeholder="Temperature" oninput="convertTemperature()">
+            <br><br>
+            <label for="kelvin">Kelvin:</label>
+            <input type="text" id="kelvinOutput" placeholder="Kelvin" readonly>
+            <br><br>
+            <label for="ferenheit">&#8457; Fahrenheit:</label>
+            <input type="text" id="fahrenheitOutput" placeholder="Fahrenheit" readonly>
+            <br><br>
+        </div>
+        <button class="btn" type="button" onclick="clearInputs()">Clear</button>
+    </form>
+
+    <script>
+        function convertTemperature() {
+            // Get Celsius input value
+            var celsiusInput = document.getElementById('celsiusInput').value;
+
+            // Convert to Kelvin
+            var kelvinOutput = parseFloat(celsiusInput) + 273.15;
+
+            // Convert to Fahrenheit
+            var fahrenheitOutput = (parseFloat(celsiusInput) * 9/5) + 32;
+
+            // Update output fields
+            document.getElementById('kelvinOutput').value = kelvinOutput.toFixed(2);
+            document.getElementById('fahrenheitOutput').value = fahrenheitOutput.toFixed(2);
+        }
+
+        function clearInputs() {
+            // Clear all input fields
+            document.getElementById('celsiusInput').value = '';
+            document.getElementById('kelvinOutput').value = '';
+            document.getElementById('fahrenheitOutput').value = '';
+        }
+    </script>
+</body>
+</html>
